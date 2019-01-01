@@ -1,0 +1,35 @@
+[
+  {
+    "playerId": 1629029,
+    "name": "Luka Doncic",
+    "birthDate": "1999-02-28T00:00:00",
+    "height": "6-7",
+    "weight": "218",
+    "position": "Forward-Guard",
+    "teamId": 1610612742,
+    "teamName": "Mavericks",
+    "teamCity": "Dallas"
+  },
+  {
+    "playerId": 2544,
+    "name": "LeBron James",
+    "birthDate": "1984-12-30T00:00:00",
+    "height": "6-8",
+    "weight": "250",
+    "position": "Forward",
+    "teamId": 1610612747,
+    "teamName": "Lakers",
+    "teamCity": "Los Angeles"
+  },
+  {
+    "playerId": 1627759,
+    "name": "Jaylen Brown",
+    "birthDate": "1996-10-24T00:00:00",
+    "height": "6-7",
+    "weight": "220",
+    "position": "Guard",
+    "teamId": 1610612738,
+    "teamName": "Celtics",
+    "teamCity": "Boston"
+  }
+]

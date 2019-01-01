@@ -1,0 +1,25 @@
+{
+  "name": "nba-stats-api-nodejs",
+  "version": "1.0.0",
+  "description": "An API backend for the NBA Stats App written in Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "start:mock": "MOCK=true nodemon index.js",
+    "deploy": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "node-fetch": "^2.3.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}

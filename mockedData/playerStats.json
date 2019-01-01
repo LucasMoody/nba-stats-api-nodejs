@@ -1,0 +1,118 @@
+[
+  {
+    "playerInformation": {
+      "birthDate": "1996-10-24T00:00:00",
+      "firstName": "Jaylen",
+      "height": "6-7",
+      "lastName": "Brown",
+      "playerId": 1627759,
+      "teamCity": "Boston",
+      "teamId": 1610612738,
+      "teamName": "Celtics",
+      "weight": "220"
+    },
+    "playerStats": {
+      "assists": 1.5,
+      "blocks": 0.6,
+      "defensiveRating": 100.6,
+      "effectiveFieldGoalPercentage": 0.459,
+      "threePointPercentage": 0.28,
+      "fieldGoalPercentage": 0.409,
+      "freeThrowPercentage": 0.677,
+      "netRating": 1.2,
+      "offensiveRating": 101.9,
+      "points": 11.7,
+      "rebounds": 4.2,
+      "steals": 0.7,
+      "trueShootingPercentage": 0.489,
+      "turnovers": 1.5
+    }
+  },
+  {
+    "playerInformation": {
+      "birthDate": "1997-12-20T00:00:00",
+      "firstName": "De'Aaron",
+      "height": "6-3",
+      "lastName": "Fox",
+      "playerId": 1628368,
+      "teamCity": "Sacramento",
+      "teamId": 1610612758,
+      "teamName": "Kings",
+      "weight": "175"
+    },
+    "playerStats": {
+      "assists": 7.3,
+      "blocks": 0.5,
+      "defensiveRating": 107.6,
+      "effectiveFieldGoalPercentage": 0.523,
+      "threePointPercentage": 0.387,
+      "fieldGoalPercentage": 0.477,
+      "freeThrowPercentage": 0.732,
+      "netRating": 2.8,
+      "offensiveRating": 110.4,
+      "points": 17.9,
+      "rebounds": 3.5,
+      "steals": 1.5,
+      "trueShootingPercentage": 0.57,
+      "turnovers": 3.1
+    }
+  },
+  {
+    "playerInformation": {
+      "birthDate": "1984-12-30T00:00:00",
+      "firstName": "LeBron",
+      "height": "6-8",
+      "lastName": "James",
+      "playerId": 2544,
+      "teamCity": "Los Angeles",
+      "teamId": 1610612747,
+      "teamName": "Lakers",
+      "weight": "250"
+    },
+    "playerStats": {
+      "assists": 7,
+      "blocks": 0.7,
+      "defensiveRating": 105.1,
+      "effectiveFieldGoalPercentage": 0.573,
+      "threePointPercentage": 0.37,
+      "fieldGoalPercentage": 0.519,
+      "freeThrowPercentage": 0.683,
+      "netRating": 2.7,
+      "offensiveRating": 107.8,
+      "points": 27.7,
+      "rebounds": 7.7,
+      "steals": 1.3,
+      "trueShootingPercentage": 0.603,
+      "turnovers": 3.4
+    }
+  },
+  {
+    "playerInformation": {
+      "birthDate": "1999-02-28T00:00:00",
+      "firstName": "Luka",
+      "height": "6-7",
+      "lastName": "Doncic",
+      "playerId": 1629029,
+      "teamCity": "Dallas",
+      "teamId": 1610612742,
+      "teamName": "Mavericks",
+      "weight": "218"
+    },
+    "playerStats": {
+      "assists": 4.6,
+      "blocks": 0.3,
+      "defensiveRating": 106.2,
+      "effectiveFieldGoalPercentage": 0.509,
+      "threePointPercentage": 0.358,
+      "fieldGoalPercentage": 0.435,
+      "freeThrowPercentage": 0.767,
+      "netRating": 0.1,
+      "offensiveRating": 106.4,
+      "points": 18.2,
+      "rebounds": 6.7,
+      "steals": 1.1,
+      "trueShootingPercentage": 0.557,
+      "turnovers": 3.6
+    }
+  }
+]
