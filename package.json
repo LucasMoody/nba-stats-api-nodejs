@@ -4,8 +4,9 @@
   "description": "An API backend for the NBA Stats App written in Node.js",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "start:mock": "MOCK=true nodemon index.js",
+    "start": "cd src && node index.js",
+    "start:watch": "cd src && nodemon index.js",
+    "start:mock": "cd src && MOCK=true nodemon index.js",
     "deploy": "",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
