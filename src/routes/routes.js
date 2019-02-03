@@ -5,8 +5,13 @@ var appRouter = function(app) {
     response.status(200).send("Hello");
   });
   app.get("/players", async function(request, response) {
-    const players = await nbaApi.getAllPlayers();
-    response.status(200).json(players);
+    try {
+      const players = await nbaApi.getAllPlayers();
+      response.status(200).json(players);
+    } catch (error) {
+      console.error(error);
+      response.status(500);
+    }
   });
   app.get("/players/:id", async function(request, response) {
     const id = request.params.id;
