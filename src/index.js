@@ -16,3 +16,6 @@ const port = process.env.PORT || 4000;
 app.listen(port, function() {
   console.log("Example app listening on port %d!", port);
 });
+
+// init cache fill scheduling
+require("./services/fill-cache-schedule");
