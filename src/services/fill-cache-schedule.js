@@ -11,7 +11,7 @@ async function fillPlayerCache() {
 
 async function fillPlayerInformation() {
   console.log("FillCache::#fillPlayerInformation");
-  const players = (await apiCacheCombined.getAllPlayers()).splice(0, 10);
+  const players = await apiCacheCombined.getAllPlayers();
   const fillInfoForPlayer = async player => {
     try {
       console.log(
@@ -28,7 +28,7 @@ async function fillPlayerInformation() {
 
 async function fillSimplePlayerStats() {
   console.log("FillCache::#fillSimplePlayerStats");
-  const players = (await apiCacheCombined.getAllPlayers()).splice(0, 10);
+  const players = await apiCacheCombined.getAllPlayers();
   const fillSimpleStatsForPlayer = async player => {
     try {
       console.log(
@@ -45,7 +45,7 @@ async function fillSimplePlayerStats() {
 
 async function fillAdvancedPlayerStats() {
   console.log("FillCache::#fillAdvancedPlayerStats");
-  const players = (await apiCacheCombined.getAllPlayers()).splice(0, 10);
+  const players = await apiCacheCombined.getAllPlayers();
   const fillSimpleStatsForPlayer = async player => {
     try {
       console.log(
