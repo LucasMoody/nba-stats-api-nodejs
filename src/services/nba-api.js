@@ -15,43 +15,31 @@ async function fetchNbaApi(path) {
   })
     .then(response => response.json())
     .catch(error => {
-      console.error(error);
+      console.error("Error for URL" + config.NbaApiEndpoint + path, error);
       throw error;
     });
 }
 
-let cachedPlayers;
 async function getAllPlayers() {
-  console.log("#getAllPlayers");
-  if (cachedPlayers) {
-    console.log("#getAllPlayers: caching");
-    return cachedPlayers;
-  }
-  try {
-    console.log("#getAllPlayers: api");
-    const SEASON = "2018-19";
-    const players = await fetchNbaApi(
-      "/commonallplayers?LeagueId=00&Season=" +
-        SEASON +
-        "&IsOnlyCurrentSeason=1"
-    );
+  console.log("API::#getAllPlayers");
+  const SEASON = "2018-19";
+  const players = await fetchNbaApi(
+    "/commonallplayers?LeagueId=00&Season=" + SEASON + "&IsOnlyCurrentSeason=1"
+  );
 
-    const headers = players.resultSets[0].headers;
-    const result = players.resultSets[0].rowSet.map(playerInfo => ({
-      playerId: playerInfo[headers.indexOf("PERSON_ID")],
-      name: playerInfo[headers.indexOf("DISPLAY_FIRST_LAST")],
-      teamId: playerInfo[headers.indexOf("TEAM_ID")],
-      teamCity: playerInfo[headers.indexOf("TEAM_CITY")],
-      teamName: playerInfo[headers.indexOf("TEAM_NAME")]
-    }));
-    cachedPlayers = result;
-    return result;
-  } catch (exception) {
-    console.error(exception);
-  }
+  const headers = players.resultSets[0].headers;
+  const result = players.resultSets[0].rowSet.map(playerInfo => ({
+    playerId: playerInfo[headers.indexOf("PERSON_ID")],
+    name: playerInfo[headers.indexOf("DISPLAY_FIRST_LAST")],
+    teamId: playerInfo[headers.indexOf("TEAM_ID")],
+    teamCity: playerInfo[headers.indexOf("TEAM_CITY")],
+    teamName: playerInfo[headers.indexOf("TEAM_NAME")]
+  }));
+  return result;
 }
 
 async function getSimplePlayerStats(id) {
+  console.log("API::#getSimplePlayerStats for id: " + id);
   const playerInfoResponse = await fetchNbaApi(
     "/playerdashboardbyyearoveryear?" +
       "DateFrom=&" +
@@ -81,25 +69,22 @@ async function getSimplePlayerStats(id) {
       "VsDivision="
   );
 
-  try {
-    const headers = playerInfoResponse.resultSets[0].headers;
-    return playerInfoResponse.resultSets[0].rowSet.map(playerInfo => ({
-      points: playerInfo[headers.indexOf("PTS")],
-      fieldGoalPercentage: playerInfo[headers.indexOf("FG_PCT")],
-      threePointPercentage: playerInfo[headers.indexOf("FG3_PCT")],
-      freeThrowPercentage: playerInfo[headers.indexOf("FT_PCT")],
-      rebounds: playerInfo[headers.indexOf("REB")],
-      assists: playerInfo[headers.indexOf("AST")],
-      steals: playerInfo[headers.indexOf("STL")],
-      turnovers: playerInfo[headers.indexOf("TOV")],
-      blocks: playerInfo[headers.indexOf("BLK")]
-    }))[0];
-  } catch (exception) {
-    console.error(exception);
-  }
+  const headers = playerInfoResponse.resultSets[0].headers;
+  return playerInfoResponse.resultSets[0].rowSet.map(playerInfo => ({
+    points: playerInfo[headers.indexOf("PTS")],
+    fieldGoalPercentage: playerInfo[headers.indexOf("FG_PCT")],
+    threePointPercentage: playerInfo[headers.indexOf("FG3_PCT")],
+    freeThrowPercentage: playerInfo[headers.indexOf("FT_PCT")],
+    rebounds: playerInfo[headers.indexOf("REB")],
+    assists: playerInfo[headers.indexOf("AST")],
+    steals: playerInfo[headers.indexOf("STL")],
+    turnovers: playerInfo[headers.indexOf("TOV")],
+    blocks: playerInfo[headers.indexOf("BLK")]
+  }))[0];
 }
 
 async function getAdvancedPlayerStats(id) {
+  console.log("API::#getAdvancedPlayerStats for id: " + id);
   const playerInfoResponse = await fetchNbaApi(
     "/playerdashboardbyyearoveryear?" +
       "DateFrom=&" +
@@ -129,52 +114,37 @@ async function getAdvancedPlayerStats(id) {
       "VsDivision="
   );
 
-  try {
-    const headers = playerInfoResponse.resultSets[0].headers;
-    return playerInfoResponse.resultSets[0].rowSet.map(playerInfo => ({
-      offensiveRating: playerInfo[headers.indexOf("OFF_RATING")],
-      defensiveRating: playerInfo[headers.indexOf("DEF_RATING")],
-      netRating: playerInfo[headers.indexOf("NET_RATING")],
-      trueShootingPercentage: playerInfo[headers.indexOf("TS_PCT")],
-      effectiveFieldGoalPercentage: playerInfo[headers.indexOf("EFG_PCT")]
-    }))[0];
-  } catch (exception) {
-    console.error(exception);
-  }
+  const headers = playerInfoResponse.resultSets[0].headers;
+  return playerInfoResponse.resultSets[0].rowSet.map(playerInfo => ({
+    offensiveRating: playerInfo[headers.indexOf("OFF_RATING")],
+    defensiveRating: playerInfo[headers.indexOf("DEF_RATING")],
+    netRating: playerInfo[headers.indexOf("NET_RATING")],
+    trueShootingPercentage: playerInfo[headers.indexOf("TS_PCT")],
+    effectiveFieldGoalPercentage: playerInfo[headers.indexOf("EFG_PCT")]
+  }))[0];
 }
 
-let cachedPlayerInformation = {};
 async function getPlayerInformation(id) {
-  console.log("#getPlayerInformation");
-  if (cachedPlayerInformation && cachedPlayerInformation[id]) {
-    console.log("#getPlayerInformation: cached");
-    return cachedPlayerInformation[id];
-  }
-  console.log("#getPlayerInformation: api");
+  console.log("API::#getPlayerInformation for id: " + id);
   const playerInfoResponse = await fetchNbaApi(
     "/commonplayerinfo?PlayerId=" + id
   );
 
-  try {
-    const headers = playerInfoResponse.resultSets[0].headers;
-    const playerInformation = playerInfoResponse.resultSets[0].rowSet.map(
-      playerInfo => ({
-        playerId: playerInfo[headers.indexOf("PERSON_ID")],
-        firstName: playerInfo[headers.indexOf("FIRST_NAME")],
-        lastName: playerInfo[headers.indexOf("LAST_NAME")],
-        birthDate: playerInfo[headers.indexOf("BIRTHDATE")],
-        height: playerInfo[headers.indexOf("HEIGHT")],
-        weight: playerInfo[headers.indexOf("WEIGHT")],
-        teamId: playerInfo[headers.indexOf("TEAM_ID")],
-        teamCity: playerInfo[headers.indexOf("TEAM_CITY")],
-        teamName: playerInfo[headers.indexOf("TEAM_NAME")]
-      })
-    )[0];
-    cachedPlayerInformation[id] = playerInformation;
-    return playerInformation;
-  } catch (exception) {
-    console.error(exception);
-  }
+  const headers = playerInfoResponse.resultSets[0].headers;
+  const playerInformation = playerInfoResponse.resultSets[0].rowSet.map(
+    playerInfo => ({
+      playerId: playerInfo[headers.indexOf("PERSON_ID")],
+      firstName: playerInfo[headers.indexOf("FIRST_NAME")],
+      lastName: playerInfo[headers.indexOf("LAST_NAME")],
+      birthDate: playerInfo[headers.indexOf("BIRTHDATE")],
+      height: playerInfo[headers.indexOf("HEIGHT")],
+      weight: playerInfo[headers.indexOf("WEIGHT")],
+      teamId: playerInfo[headers.indexOf("TEAM_ID")],
+      teamCity: playerInfo[headers.indexOf("TEAM_CITY")],
+      teamName: playerInfo[headers.indexOf("TEAM_NAME")]
+    })
+  )[0];
+  return playerInformation;
 }
 
 module.exports = {
